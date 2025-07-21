@@ -9,7 +9,7 @@ public:
             return false;
         if (p->val != q->val)
             return false;
-        return fun(p->left, q->left) && fun(p->right, q->right);
+        return fun(p->left, q->right) && fun(p->right, q->left);
     }
-    bool isSameTree(TreeNode* p, TreeNode* q) { return fun(p, q); }
+    bool isSymmetric(TreeNode* root) { return fun(root->left, root->right); }
 };
