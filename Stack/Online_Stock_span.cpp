@@ -18,3 +18,26 @@ public:
         return ans;
     }
 };
+
+//optimal solution using stack with previous greater element.
+class StockSpanner {
+public:
+    stack<pair<int, int>> st;
+    int index = -1;
+
+    StockSpanner() {
+        while (!st.empty())
+            st.pop();
+    }
+
+    int next(int price) {
+        index++;
+        while (!st.empty() && st.top().first <= price) {
+            st.pop();
+        }
+        int ans = st.empty() ? index + 1 : index - st.top().second;
+        st.push({price, index});
+        return ans;
+    }
+};
+
