@@ -1,5 +1,19 @@
 // recursive solution 
-
+class Solution {
+public:
+    long long fun(vector<vector<int>> questions, int i) {
+        if (i >= questions.size())
+            return 0;
+        int points = questions[i][0];
+        int brain = questions[i][1];
+        int pick = points + fun(questions, i + brain + 1);
+        int notpick = fun(questions, i + 1);
+        return max(pick, notpick);
+    }
+    long long mostPoints(vector<vector<int>>& questions) {
+        return fun(questions, 0);
+    }
+};
 //momoized code
 class Solution {
 public:
