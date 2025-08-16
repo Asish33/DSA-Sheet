@@ -25,3 +25,31 @@ public:
         return (ans >= 1e9 ? -1 : ans);
     }
 };
+
+//memoization solution
+
+class Solution {
+public:
+    int fun(vector<int>&coins,int target,int i, vector<vector<int>>& dp){
+        if(target==0) return 0;
+        if(i==coins.size()) return 1e9;
+
+        if(dp[i][target] != -1) return dp[i][target];
+
+        int notpick = fun(coins,target,i+1,dp);
+        int pick = 1e9;
+        if(target>=coins[i]){
+            pick = 1 + fun(coins,target-coins[i],i,dp);
+        }
+        
+        return dp[i][target] = min(notpick,pick);
+    }
+
+    int coinChange(vector<int>& coins, int amount) {
+        int n = coins.size();
+        vector<vector<int>> dp(n, vector<int>(amount+1, -1));
+
+        int ans = fun(coins,amount,0,dp);
+        return (ans >= 1e9 ? -1 : ans);
+    }
+};
