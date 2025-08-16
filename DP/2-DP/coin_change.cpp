@@ -47,7 +47,7 @@ public:
 
     int coinChange(vector<int>& coins, int amount) {
         int n = coins.size();
-        vector<vector<int>> dp(n, vector<int>(amount+1, -1));
+        vector<vector<int>> dp(n, vector<int>(amount+1, -1)); // as amount value goes from 0 to amount value we will have amount+1 values. including zero will increase entry.
 
         int ans = fun(coins,amount,0,dp);
         return (ans >= 1e9 ? -1 : ans);
