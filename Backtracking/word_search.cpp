@@ -3,7 +3,8 @@ public:
     bool fun(vector<vector<char>>& board, int row, int col, string& word, int index, vector<vector<int>>& visited) {
         if (index == word.size()) return true;
 
-        int n = board.size(), m = board[0].size();
+        int n = board.size();
+        int m = board[0].size();
         if (row < 0 || col < 0 || row >= n || col >= m) return false;
         if (visited[row][col] == 1 || board[row][col] != word[index]) return false;
 
