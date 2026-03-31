@@ -22,7 +22,7 @@ int seg(int a[], int n)
     // here we check every index (to change).
     for(int i=1;i<n-1;i++){
         //possible to merge ?
-        if(a[i + 1] - a[i - 1] > 1){
+        if(a[i + 1] - a[i - 1] > 1){  // to make sure we can insert an element in that gap of 1.
             ans = max(ans, 1 + l[i-1]+r[i+1]);
         }
         else{
