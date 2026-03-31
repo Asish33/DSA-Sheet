@@ -23,7 +23,7 @@ public:
         return false;
     }
 
-    bool exist(vector<vector<char>>& board, string word) {
+    bool exist(vector<vector<char>>& board, string& word) {
         int n = board.size();
         int m = board[0].size();
         vector<vector<int>> visited(n, vector<int>(m, 0));
